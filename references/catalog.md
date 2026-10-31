@@ -1,6 +1,6 @@
 # 本地工具工作室
 
-HTML 是可直接打开的离线快照，无 CDN 或外部脚本。扫描只读文件和 Git 元数据，不安装依赖、不启动发现的项目。Python 3.9+；Git 信息需要本机 git。
+HTML 是可直接打开的离线快照，无 CDN 或外部脚本。默认复用 Workstation-OPC 的原始 SVG 机房场景，将真实项目映射为服务器、电脑与手机；保留作者署名、开发者水印及 assets/workstation-LICENSE.txt。本版本由他人修改，非作者原版。扫描只读文件和 Git 元数据，不安装依赖、不启动发现的项目。Python 3.9+；Git 信息需要本机 git。
 
 ```sh
 python3 scripts/build_catalog.py --root /path/to/projects --root /path/to/other \
@@ -39,6 +39,6 @@ python3 scripts/build_catalog.py --root /path/to/projects --root /path/to/other 
 
 match 可用 name、path、repo，多字段同时匹配；同名多项目优先用 path。可添加 displayName、commands（label、command、source、kind）。工作流按项目名关联；检查每步 ids 是否匹配，避免把研究意图写成实际操作。没有用途记录的项目照常显示“使用记录待补充”。
 
-支持全文检索、分类、启动中心、副本比较、工作流、常用、备注、Markdown/JSON 导出与 JSON 导入。常用和备注保存在浏览器 localStorage，导出 JSON 可备份。导入数据只影响当前页面，重新打开原 HTML 仍加载原快照。重新扫描必须运行脚本；浏览器不会自行读取电脑。
+支持全文检索（含 README）、设备类型筛选、每组 12 个项目分页、缩放和全屏。悬停设备打开详情，浮层支持滚动、复制路径/命令/README；点击设备固定，Esc 关闭。读取根目录 README，最多嵌入 1 MiB，超出时显示截断提示。README 以转义后的纯文本呈现，避免执行其中 HTML。未发现文件时明确显示。历史相关对话暂不单独链接。浏览器不会自行扫描磁盘，更新必须运行扫描脚本。
 
-个人清单和注释保留在公共代码仓库之外。公开仓库只包含模板、脚本和虚构测试。HTML 界面为原创，不包含参考站点源码或素材。
+个人清单和注释保留在公共代码仓库之外。公开仓库只包含模板、脚本和虚构测试。场景源码来自 https://github.com/cyberdaddyleo/workstation-OPC ，适用随附个人免费使用许可；新增本地项目数据映射与悬停资料功能。

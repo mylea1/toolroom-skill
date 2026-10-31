@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Discover local projects and render an offline, searchable studio catalog."""
-import argparse, plistlib, datetime, hashlib, json, os, re, shlex, subprocess
+import argparse, plistlib, shutil, datetime, hashlib, json, os, re, shlex, subprocess
 from pathlib import Path
 
 SKIP = {'.git','node_modules','vendor','vendors','.venv','venv','env','__pycache__','build','dist','target','.next','.cache','.npm','.pnpm-store','Pods','DerivedData','site-packages','Library','coverage','venv311','.venv311','skill-validation-env'}
@@ -135,10 +135,21 @@ def apply_annotations(projects, data):
     return duplicates,workflows
 
 def render(data, output):
+    for project in data.get('projects', []):
+        root=Path(project['path'])
+        try:
+            candidates=sorted((f for f in root.iterdir() if f.is_file() and f.name.lower() in ('readme.md','readme.zh-cn.md','readme.txt','readme')),key=lambda f: (f.name.lower()!='readme.md',f.name))
+            if candidates:
+                f=candidates[0]
+                with f.open('rb') as stream: raw=stream.read(1024*1024+1)
+                project['readme']={'path':str(f),'content':raw[:1024*1024].decode('utf-8',errors='replace'),'truncated':len(raw)>1024*1024}
+        except OSError:pass
     template=Path(__file__).resolve().parent.parent/'assets/catalog.html'
     payload=json.dumps(data,ensure_ascii=False).replace('<','\\u003c').replace('\u2028','\\u2028').replace('\u2029','\\u2029')
     out=Path(output);out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(template.read_text().replace('__CATALOG_DATA__',payload),encoding='utf-8')
+    license=template.parent/'workstation-LICENSE.txt'
+    if license.exists():shutil.copy2(license,out.parent/'workstation-LICENSE.txt')
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)

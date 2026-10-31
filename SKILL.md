@@ -56,4 +56,4 @@ build 默认扫描 CODEX_HOME 或 ~/.codex 下 sessions/ 和 archived_sessions/�
 
 ## 可搜索 HTML 工作室
 
-用户要求 HTML 清单、项目发现、启动方式、副本比较或工作流界面时，阅读 [工作室规范](references/catalog.md)。先用 scripts/build_catalog.py 扫描用户工作目录，再按上面的历史流程补充私有 annotations JSON 并重新生成 HTML 与 JSON。默认保存到当前工作区 outputs/工具工作室/。保留已获取的所有独立项目，不把内部包全部当独立工具。启动命令仅供查看与复制。检查搜索、详情、常用、备注、工作流和导入导出，并验证窄屏布局。报告发现数量、重复组数量及历史注释覆盖，提供 HTML 链接。
+用户要求 HTML 清单、项目发现、启动方式、副本比较或工作流界面时，阅读 [工作室规范](references/catalog.md)。先用 scripts/build_catalog.py 扫描用户工作目录，再按上面的历史流程补充私有 annotations JSON 并重新生成 HTML 与 JSON。默认保存到当前工作区 outputs/工具工作室/。保留已获取的所有独立项目，不把内部包全部当独立工具。启动命令仅供查看与复制。使用原始机房场景呈现项目，悬停展示 README、部署路径、启动命令和用途。检查搜索、悬停停留、固定与关闭、README 滚动和复制、分页及窄屏浮层。保留上游作者署名、水印与许可证。报告发现数量、重复组数量及历史注释覆盖，提供 HTML 链接。

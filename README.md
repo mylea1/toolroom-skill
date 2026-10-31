@@ -76,7 +76,7 @@ references/report-schema.md  Markdown 报告规范
 
 ## 可搜索 HTML 工具工作室
 
-新增离线工作室界面：项目发现、全文搜索、启动命令、副本与版本比较、历史工作流、常用和备注，以及 Markdown/JSON 导出。
+离线工作室采用 Workstation-OPC 的原始机房场景：真实项目对应机柜、电脑和手机。悬停查看 README、部署目录、启动命令和历史用途；支持搜索、类型筛选、分页、缩放、固定详情与复制。扫描 JSON 保留副本比较与工作流数据。
 
 ```sh
 python3 scripts/build_catalog.py --root /path/to/projects --output /path/to/private/index.html
@@ -87,3 +87,7 @@ python3 scripts/build_catalog.py --root /path/to/projects --output /path/to/priv
 在 Codex 中可说：“使用 $deployment-history，扫描本地项目并生成工具工作室，补充启动方式、重复版本和历史工作流。”
 
 测试：`python3 -m unittest discover -s tests`。
+
+### 场景来源与许可
+
+场景代码来自 [Workstation-OPC](https://github.com/cyberdaddyleo/workstation-OPC)，Developed by @赛博老爸。本版本由他人修改，非作者原版；主要改动为本地项目映射、README 嵌入与悬停详情。场景适用 [上游个人免费使用许可](assets/workstation-LICENSE.txt)，商业使用需作者授权。
