@@ -73,3 +73,17 @@ agents/openai.yaml           Codex 技能展示信息
 scripts/scan_history.py      本地索引与证据检索
 references/report-schema.md  Markdown 报告规范
 ```
+
+## 可搜索 HTML 工具工作室
+
+新增离线工作室界面：项目发现、全文搜索、启动命令、副本与版本比较、历史工作流、常用和备注，以及 Markdown/JSON 导出。
+
+```sh
+python3 scripts/build_catalog.py --root /path/to/projects --output /path/to/private/index.html
+```
+
+直接打开生成的 HTML。用 `--annotations` 加入经会话核实的用途和工作流；脚本不会自行推断历史用途。详细格式与扫描边界见 [工作室规范](references/catalog.md)。
+
+在 Codex 中可说：“使用 $deployment-history，扫描本地项目并生成工具工作室，补充启动方式、重复版本和历史工作流。”
+
+测试：`python3 -m unittest discover -s tests`。
