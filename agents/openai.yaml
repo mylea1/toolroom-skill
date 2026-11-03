@@ -1,3 +1,3 @@
 interface:
-  display_name: "部署工具回顾"
-  short_description: "扫描 Codex 历史，追踪工具部署及后续使用，生成 Markdown 与可搜索 HTML 工具工作室"
+  display_name: "Toolroom"
+  short_description: "发现本地项目、整合重复副本与历史用途，生成可搜索的离线可视化工具室"
